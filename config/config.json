@@ -1,0 +1,48 @@
+{
+
+	"fuzzers": {
+		"total_number": 2,
+		"master_fuzzer": {
+			"number": 1,
+			"percentage": null,
+			"fuzzer_settings": {
+				"env_variables": ["AFL_FINAL_SYNC=1"],
+				"program_name": "afl-fuzz", 
+				"options": {
+					"-i": "_results/in",
+					"-o": "_results/out",
+					"-V": 60,
+					"-x": "_results/dictionaries/fuzzer.dict",
+					"-M": "master_fuzzer"
+				},
+				"delimeter":"--",
+				"target":"_results/fuzzer",
+				"target_args": null
+			}
+
+
+		},
+
+		"asan_fuzzer": {	
+			"number": 1,
+			"percentage": null,
+			"fuzzer_settings": {
+				"env_variables": ["AFL_USE_ASAN=1"],
+				"program_name": "afl-fuzz", 
+				"options": {
+					"-i": "_results/in",
+					"-o": "_results/out",
+					"-V": 60,
+					"-x": "_results/dictionaries/fuzzer.dict",
+					"-M": "asan_fuzzer"
+				},
+				"delimeter": "--",
+				"target": "_results/asan_fuzzer",
+				"target_args": null
+			}
+
+		}
+
+	}
+
+}
