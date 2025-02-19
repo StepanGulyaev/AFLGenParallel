@@ -1,7 +1,6 @@
 {
-
+	"total_number": 2,
 	"fuzzers": {
-		"total_number": 2,
 		"master_fuzzer": {
 			"number": 1,
 			"percentage": null,
