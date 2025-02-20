@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field, model_validator
 
-class fuzzer(BaseModel):
+class Fuzzer(BaseModel):
     name: str = Field(..., min_length=1)
     number: Optional[int] = Field(None, gt=0)
     percentage: Optional[float] = Field(None, gt=0, le=1)
@@ -12,7 +12,9 @@ class fuzzer(BaseModel):
             raise ValueError("You have to use either number or percentage, but not both.")
         return values
 
-class fuzzer_settings(BaseModel):
+    fuzzer_settings: FuzzerSettings = Field(...)
+
+class FuzzerSettings(BaseModel):
     env_variables: Optional[List[str]] = Field(default=None)
 
     @field_valdator("env_variables",mode="after")
@@ -27,6 +29,11 @@ class fuzzer_settings(BaseModel):
         return env_var
 
     program_name: str = Field(..., min_length=1)
+    options: dict = Field(...)
+    
+
+
+
 
 #class options(BaseModel):
 
