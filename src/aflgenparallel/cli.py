@@ -22,7 +22,7 @@ def parse_main_args():
                         '--output-file',
                         type=str, 
                         required=False,
-                        default='AFLGenParallel_out.txt',
+                        default='aflgenparallel_out.txt',
                         help="File with AFLGenParallel output")
     return parser.parse_args()
 

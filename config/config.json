@@ -1,17 +1,15 @@
 {
-	"total_number": 2,
 	"fuzzers": {
 		"master_fuzzer": {
-			"number": 1,
-			"percentage": null,
+			"number": 2,
 			"fuzzer_settings": {
 				"env_variables": ["AFL_FINAL_SYNC=1"],
 				"program_name": "afl-fuzz", 
 				"options": {
-					"-i": "_results/in",
-					"-o": "_results/out",
+					"-i": "in",
+					"-o": "out",
 					"-V": 60,
-					"-x": "_results/dictionaries/fuzzer.dict",
+					"-x": "fuzzer.dict",
 					"-M": "master_fuzzer"
 				},
 				"delimeter":"--",
@@ -24,7 +22,6 @@
 
 		"asan_fuzzer": {	
 			"number": 1,
-			"percentage": null,
 			"fuzzer_settings": {
 				"env_variables": ["AFL_USE_ASAN=1"],
 				"program_name": "afl-fuzz", 
