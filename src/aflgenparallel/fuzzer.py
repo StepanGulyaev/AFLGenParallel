@@ -38,7 +38,9 @@ class ConfigData(BaseModel):
 
                 record += fuzzer.fuzzer_settings.delimeter + " "
                 record += fuzzer.fuzzer_settings.target + " "
-                record += ((fuzzer.fuzzer_settings.target_args or "") + "\n")
+                record += ((fuzzer.fuzzer_settings.target_args or "") + " ")
+                record += ((fuzzer.fuzzer_settings.additional or ""))
+                record = " ".join(record.split()) + "\n"
                 records.append(record)
         
         with open(output_file,"w") as file:
@@ -86,9 +88,4 @@ class FuzzerSettings(BaseModel):
     delimeter: Optional[str]
     target: str
     target_args: Optional[str]
-
-#class options(BaseModel):
-
-    
-
-
+    additional: Optional[str]

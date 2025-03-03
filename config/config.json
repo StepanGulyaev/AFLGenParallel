@@ -13,8 +13,9 @@
 					"-M": "master_fuzzer"
 				},
 				"delimeter":"--",
-				"target":"fuzzer",
-				"target_args": null
+				"target":"./fuzzer",
+				"target_args": null,
+				"additional": "& pids+=($!)"
 			}
 		},
 
@@ -31,8 +32,28 @@
 					"-S": "asan_fuzzer"
 				},
 				"delimeter": "--",
-				"target": "asan_fuzzer",
-				"target_args": null
+				"target": "./asan_fuzzer",
+				"target_args": null,
+				"additional": "> /dev/null & pids+=($!)"		
+			}
+		},
+
+		"exploit_fuzzer": {	
+			"number": 3,
+			"fuzzer_settings": {
+				"env_variables": ["AFL_NO_UI=1"],
+				"program_name": "afl-fuzz", 
+				"options": {
+					"-i": "in",
+					"-o": "out",
+					"-V": 60,
+					"-x": "fuzzer.dict",
+					"-S": "exploit_fuzzer"
+				},
+				"delimeter": "--",
+				"target": "./fuzzer",
+				"target_args": null,
+				"additional": "> /dev/null & pids+=($!)"
 			}
 		}
 	}
